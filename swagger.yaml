@@ -161,16 +161,6 @@ components:
 
     QuoteResponse:
       type: object
-      required:
-        - inputMint
-        - outputMint
-        - inAmount
-        - outAmount
-        - otherAmountThreshold
-        - swapMode
-        - slippageBps
-        - priceImpactPct
-        - routePlan
       properties:
         inputMint:
           type: string
@@ -203,6 +193,16 @@ components:
           type: number
         timeTaken:
           type: number
+      required:
+        - inputMint
+        - outputMint
+        - inAmount
+        - outAmount
+        - otherAmountThreshold
+        - swapMode
+        - slippageBps
+        - priceImpactPct
+        - routePlan
 
     SwapMode:
       type: string
@@ -218,6 +218,9 @@ components:
         feeBps:
           type: integer
           format: int32
+      required:
+        - amount
+        - feeBps
 
     RoutePlanStep:
       type: object
@@ -233,14 +236,6 @@ components:
 
     SwapInfo:
       type: object
-      required:
-        - ammKey
-        - inputMint
-        - outputMint
-        - inAmount
-        - outAmount
-        - feeAmount
-        - feeMint
       properties:
         ammKey:
           type: string
@@ -258,12 +253,18 @@ components:
           type: string
         feeMint:
           type: string
+      required:
+        - ammKey
+        - label
+        - inputMint
+        - outputMint
+        - inAmount
+        - outAmount
+        - feeAmount
+        - feeMint
 
     SwapRequest:
       type: object
-      required:
-        - userPublicKey
-        - quoteResponse
       properties:
         userPublicKey:
           description: The user public key.
@@ -313,6 +314,9 @@ components:
           type: integer
         quoteResponse:
           $ref: '#/components/schemas/QuoteResponse'
+      required:
+        - userPublicKey
+        - quoteResponse
 
     SwapResponse:
       type: object

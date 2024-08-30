@@ -9,10 +9,19 @@ import { Wallet } from "@project-serum/anchor";
 import bs58 from "bs58";
 import { transactionSenderAndConfirmationWaiter } from "./utils/transactionSender";
 import { getSignature } from "./utils/getSignature";
+import * as dotenv from 'dotenv';
+
+dotenv.config();
+
+const private_key: string = process.env.PRIVATE_KEY!;
+console.log('private_key:', private_key);
+
+const flow: string = process.env.FLOW!;
+console.log('flow:', flow);
 
 // Make sure that you are using your own RPC endpoint.
 const connection = new Connection(
-  "https://neat-hidden-sanctuary.solana-mainnet.discover.quiknode.pro/2af5315d336f9ae920028bbb90a73b724dc1bbed/"
+    "https://api.mainnet-beta.solana.com/"
 );
 const jupiterQuoteApi = createJupiterApiClient();
 
